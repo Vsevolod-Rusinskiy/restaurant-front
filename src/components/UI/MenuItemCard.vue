@@ -1,8 +1,9 @@
 <template>
     <div class="menu-item-card">
-        <h3>{{ title }}</h3>
-        <p>{{ description }}</p>
-        <div class="price">{{ price.toFixed(2) }} ₽</div>
+        <img v-if="props.imageUrl" :src="props.imageUrl" alt="Фото блюда" class="menu-item-card__image" />
+        <h3 class="menu-item-card__title">{{ props.title }}</h3>
+        <p class="menu-item-card__description">{{ props.description }}</p>
+        <p class="menu-item-card__price">{{ props.price }} руб.</p>
     </div>
 </template>
 
@@ -13,20 +14,41 @@ const props = defineProps({
     title: String,
     description: String,
     price: Number,
+    imageUrl: String,
 })
 </script>
 
-<style>
+<style lang="scss" scoped>
 .menu-item-card {
-    border: 1px solid #ccc; /* рамка для карточки */
-    border-radius: 8px; /* скругление углов рамки */
-    padding: 16px; /* внутренний отступ внутри каждой карточки */
-    margin-bottom: 16px; /* отступ снизу для каждой карточки */
-    background-color: white; /* фон карточки, чтобы текст был легче читаться */
-}
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: white;
 
-.price {
-    font-weight: bold;
-    color: #4caf50; /* Зеленый цвет для цены, чтобы выделить */
+    &__image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px 8px 0 0;
+        object-fit: cover;
+        object-position: center;
+        aspect-ratio: 16 / 9;
+    }
+
+    &__title {
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    &__description {
+        font-size: 1em;
+        margin-bottom: 0.5em;
+    }
+
+    &__price {
+        font-weight: bold;
+        color: #4caf50;
+        font-size: 1.2em;
+    }
 }
 </style>

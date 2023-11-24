@@ -1,47 +1,55 @@
 <template>
     <nav class="navbar">
-        <router-link to="/" class="navbar-item">Главная</router-link>
-        <router-link to="/admin" class="navbar-item">Администрирование</router-link>
-        <!-- Дополнительные ссылки по мере необходимости -->
+        <div class="navbar__container">
+            <router-link to="/" class="navbar__item">Главная</router-link>
+            <router-link to="/admin" v-if="authStore.isAuthenticated" class="navbar__item"
+                >Администрирование</router-link
+            >
+            <button @click="authStore.isAuthenticated ? logout() : login()">
+                {{ authStore.isAuthenticated ? 'Выйти' : 'Войти' }}
+            </button>
+        </div>
     </nav>
 </template>
 
-<!-- Здесь стили и скрипты, если они вам нужны -->
-
 <script setup>
-// Пустой <script setup> для будущего кода
+import { useAuthStore } from '@/store/modules/authStore'
+import { useRouter } from 'vue-router'
+
+const authStore = useAuthStore()
+const router = useRouter()
+
+const login = () => {
+    router.push('/login')
+}
+
+const logout = () => {
+    authStore.clearAuthData()
+    router.push('/')
+}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .navbar {
     background-color: #333;
-    color: white;
     padding: 0.5rem 1rem;
-}
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__item {
+        margin-left: 1rem;
+        color: white;
+        text-decoration: none;
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar-brand {
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-
-.navbar-menu {
-    display: flex;
-}
-
-.navbar-item {
-    margin-left: 1rem;
-    color: white;
-    text-decoration: none;
-}
-
-.navbar-item:hover {
-    text-decoration: underline;
+        &.router-link-active {
+            color: #4caf50;
+            text-decoration: underline;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 </style>
