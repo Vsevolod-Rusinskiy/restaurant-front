@@ -1,29 +1,30 @@
-# restaurant
+**Проект 1: Веб-сайт с интерактивным меню на Vue.js и Node.js**
 
-## Project setup
+**1. Главная страница (Просмотр меню)**
+- Функция: **Просмотр различных категорий меню.**
+- Дизайн: **Категории с изображениями и описаниями блюд.**
+- Доступ: **Без авторизации.**
+- FrontEnd Технологии: **Vue.js 3 (Composition API, `<script setup>`), SCSS (БЭМ).**
+- BackEnd Технологии: **Node.js, Express.js, PostgreSQL (Prisma ORM).**
+- Техническая реализация: **Axios (запросы к серверу), Pinia (управление состоянием).**
 
-```
-npm install
-```
+**2. Переход в режим редактирования**
+- Функция: **Переключение между просмотром и редактированием.**
+- Дизайн: **Ссылка на администрирование в футере/верхнем меню.**
+- Доступ: **После авторизации.**
+- Технологии: **Vue.js (Composition API, `<script setup>`), Pinia.**
+- Техническая реализация: **JWT/сессии (аутентификация), Vue Router (маршрутизация).**
 
-### Compiles and hot-reloads for development
+**3. Страница администрирования (Редактирование меню)**
+- Функция: **Управление позициями меню (добавление, редактирование, удаление).**
+- Доступ: **Требует авторизации.**
+- FrontEnd Технологии: **Vue.js 3, Axios, SCSS, БЭМ, Pinia.**
+- BackEnd Технологии: **Node.js, Express.js, PostgreSQL, Prisma ORM.**
+- Техническая реализация: **RESTful API (Express.js), Prisma (база данных), API для загрузки изображений.**
 
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**Проект 2: Веб-приложение для управления контентом на Nest.js и MongoDB**
+- Особенности: **Полнофункциональный CRUD для управления пользователями, новостями и категориями.**
+- API: **GraphQL для интерактивного обмена данными.**
+- Обработка событий: **Apache Kafka для обработки событий в реальном времени.**
+- Кэширование: **Redis для ускорения доступа к данным.**
+- Технологии: **Nest.js, MongoDB (Mongoose), GraphQL, Apache Kafka, Redis, Docker (контейнеризация).**
